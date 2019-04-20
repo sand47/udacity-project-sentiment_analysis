@@ -37,7 +37,7 @@ The first thing we are going to do is set up a Lambda function. This Lambda func
 ## Part A: Create an IAM Role for the Lambda function<br>
 Since we want the Lambda function to call a SageMaker endpoint, we need to make sure that it has permission to do so. To do this, we will construct a role that we can later give the Lambda function.
 <br><br>
-Using the AWS Console, navigate to the IAM page and click on **Roles**. Then, click on Create role. Make sure that the AWS service is the type of trusted entity selected and choose Lambda as the service that will use this role, then click Next: Permissions.
+Using the AWS Console, navigate to the **IAM page** and click on **Roles**. Then, click on **Create role**. Make sure that the AWS service is the type of trusted entity selected and choose Lambda as the service that will use this role, then click **Next: Permissions**.
 <br><br>
 In the search box type **sagemaker** and select the check box next to the **AmazonSageMakerFullAccess** policy. Then, click on Next: Review.
 <br><br>
@@ -46,7 +46,7 @@ Lastly, give this role a name. Make sure you use a name that you will remember l
 ## Part B: Create a Lambda function<br>
 Now it is time to actually create the Lambda function.
 <br><br>
-Using the AWS Console, navigate to the AWS Lambda page and click on **Create a function**. When you get to the next page, make sure that Author from scratch is selected. Now, name your Lambda function, using a name that you will remember later on, for example sentiment_analysis_func. Make sure that the **Python 3.6** runtime is selected and then choose the role that you created in the previous part. Then, click on Create Function.
+Using the AWS Console, navigate to the **AWS Lambda page** and click on **Create a function**. When you get to the next page, make sure that Author from scratch is selected. Now, name your Lambda function, using a name that you will remember later on, for example sentiment_analysis_func. Make sure that the **Python 3.6** runtime is selected and then choose the role that you created in the previous part. Then, click on **Create Function**.
 <br>
 On the next page you will see some information about the Lambda function you've just created. If you scroll down you should see an editor in which you can write the code that will be executed when your Lambda function is triggered. In our example, we will use the code below.
 <br>
@@ -74,9 +74,9 @@ Once you have copy and pasted the code above into the Lambda code editor, replac
 # Setting up API Gateway
 Now that our Lambda function is set up, it is time to create a new API using API Gateway that will trigger the Lambda function we have just created.
 <br><br>
-Using AWS Console, navigate to Amazon API Gateway and then click on Get started.
+Using AWS Console, navigate to **Amazon API Gateway** and then click on Get started.
 <br><br>
-On the next page, make sure that New API is selected and give the new api a name, for example, sentiment_analysis_api. Then, click on Create API.
+On the next page, make sure that **New API** is selected and give the new api a name, for example, sentiment_analysis_api. Then, click on Create API.
 <br><br>
 Now we have created an API, however it doesn't currently do anything. What we want it to do is to trigger the Lambda function that we created earlier.
 <br><br>
@@ -84,7 +84,7 @@ Select the **Actions dropdown** menu and click **Create Method**. A new blank me
 <br><br>
 For the integration point, make sure that **Lambda Function is selected and click on the Use Lambda Proxy integration**. This option makes sure that the data that is sent to the API is then sent directly to the Lambda function with no processing. It also means that the return value must be a proper response object as it will also not be processed by API Gateway.
 <br><br>
-Type the name of the Lambda function you created earlier into the Lambda Function text entry box and then click on Save. Click on OK in the pop-up box that then appears, giving permission to API Gateway to invoke the Lambda function you created.
+Type the **name of the Lambda function you created earlier** into the Lambda Function text entry box and then **click on Save**. Click on OK in the pop-up box that then appears, giving permission to API Gateway to invoke the Lambda function you created.
 <br><br>
 The last step in creating the API Gateway is to select the Actions dropdown and click on Deploy API. You will need to create a new Deployment stage and name it anything you like, for example prod.
 <br><br>
