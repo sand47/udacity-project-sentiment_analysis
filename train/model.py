@@ -10,7 +10,6 @@ class LSTMClassifier(nn.Module):
         Initialize the model by settingg up the various layers.
         """
         super(LSTMClassifier, self).__init__()
-
         self.embedding = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
         self.lstm = nn.LSTM(embedding_dim, hidden_dim)
         self.dense = nn.Linear(in_features=hidden_dim, out_features=1)
