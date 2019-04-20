@@ -23,14 +23,17 @@ In addition, you will deploy and use your trained model a second time. In the se
 # Prerequisite 
 <br>
 Create an AWS account https://aws.amazon.com/ and make sure you know python if not you can learn from this link https://www.youtube.com/watch?v=oVp1vrfL_w4&list=PLQVvvaa0QuDe8XSftW-RAxdo6OmaeL85M
-<br><br>
+<br>
+
 # Deploy the model for the web app
 <br>
 After training the model and saving the endpoint we need create a path to access it through API gateway and Lambda functions. <br>
 <br>
+
 # Setting up a Lambda function<br>
 The first thing we are going to do is set up a Lambda function. This Lambda function will be executed whenever our public API has data sent to it. When it is executed it will receive the data, perform any sort of processing that is required, send the data (the review) to the SageMaker endpoint we've created and then return the result.
 <br>
+
 ## Part A: Create an IAM Role for the Lambda function<br>
 Since we want the Lambda function to call a SageMaker endpoint, we need to make sure that it has permission to do so. To do this, we will construct a role that we can later give the Lambda function.
 <br><br>
@@ -74,23 +77,24 @@ Once you have copy and pasted the code above into the Lambda code editor, replac
 
 # Setting up API Gateway
 Now that our Lambda function is set up, it is time to create a new API using API Gateway that will trigger the Lambda function we have just created.
-<br>
+<br><br>
 Using AWS Console, navigate to Amazon API Gateway and then click on Get started.
-<br>
+<br><br>
 On the next page, make sure that New API is selected and give the new api a name, for example, sentiment_analysis_api. Then, click on Create API.
-<br>
+<br><br>
 Now we have created an API, however it doesn't currently do anything. What we want it to do is to trigger the Lambda function that we created earlier.
-<br>
+<br><br>
 Select the Actions dropdown menu and click Create Method. A new blank method will be created, select its dropdown menu and select POST, then click on the check mark beside it.
-<br>
+<br><br>
 For the integration point, make sure that Lambda Function is selected and click on the Use Lambda Proxy integration. This option makes sure that the data that is sent to the API is then sent directly to the Lambda function with no processing. It also means that the return value must be a proper response object as it will also not be processed by API Gateway.
-<br>
+<br><br>
 Type the name of the Lambda function you created earlier into the Lambda Function text entry box and then click on Save. Click on OK in the pop-up box that then appears, giving permission to API Gateway to invoke the Lambda function you created.
-<br>
+<br><br>
 The last step in creating the API Gateway is to select the Actions dropdown and click on Deploy API. You will need to create a new Deployment stage and name it anything you like, for example prod.
-<br>
+<br><br>
 You have now successfully set up a public API to access your SageMaker model. Make sure to copy or write down the URL provided to invoke your newly created public API as this will be needed in the next step. This URL can be found at the top of the page, highlighted in blue next to the text Invoke URL.
-<br>
+<br><br>
+
 # Last step
 Copy the above API url and paste it in the index.html page to access the endpoint. 
 <br><br>
