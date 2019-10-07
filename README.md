@@ -1,7 +1,7 @@
 # SageMaker Deployment Project
 
 Deployed webpage https://sand47.github.io/review-classification/ <br><br>
-=== Currently not active ====
+=== Currently not active ==== <br> <br>
 The notebook and Python files provided here, once completed, result in a simple web app which interacts with a deployed recurrent neural network performing sentiment analysis on movie reviews. 
 
 # General Outline
